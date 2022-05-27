@@ -4,103 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet">
+    <script defer src="script.js"></script>
     <title>Document</title>
-    <style type="text/css">
-        html{
-            background-color: #2b3e50;
-        }
-
-        body {
-            background-color: aliceblue;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-size: 100%;
-            text-align: center;
-            width: 800px;
-            margin: 10px auto;
-            padding: 20px;
-            border-radius: 1em;
-        }
-        h1{
-            color: cornflowerblue;
-        }
-
-        h3.questions{
-            font-size: 2em;
-        }
-
-        .info{
-            font-size: 1.5em;
-        }
-
-        .answer{
-            background-color: #df691a;
-            color: rgb(255, 255, 255);
-            border-radius: 10px;
-            padding: 1em;
-            text-align: center;
-            width: 60%;
-            font-size: 1.5em;
-            margin: 10px auto 0;
-        }   
-
-        .answer:hover{
-            background-color: cornflowerblue;
-        }
-
-        .answers.selected{
-            background-color: cornflowerblue;
-        }
-
-        .button{
-            background-color: cornflowerblue;
-            color: rgb(255, 255, 255);
-            border-radius: 10px;
-            padding: 10px 5px;
-            text-align: center;
-            cursor: pointer;
-            font-size: 2em;
-        }
-
-        .mini.button{
-            display: block;
-            width: 30%;
-        }
-
-        .next{
-            float: right;
-
-        }
-
-        .previous{
-            float: left;
-        }
-
-        .button:hover{
-            background-color: darkcyan;
-        }
-
-        .button-holder{
-            width: 60%;
-            padding: 5em 0;
-            margin: .5em auto;
-        }
-
-        .clearfix:before,
-        .clearfix:after{
-            content: " ";
-            display: table;
-        }
-
-        .clearfix:after {
-            clear: both;
-        }
-
-        .response p{
-            margin: 50px auto;
-            font-size: 3em;
-        }
-
-    </style>
+    <!-- <style type="text/css">
+       
+    </style> -->
 </head>
 <body>
     <h1> what kind of _ are you? </h1>
@@ -155,21 +64,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
     crossorigin="anonymous"></script>
-    <script type="text/js">
-        <!-- stores the number of questions -->
-        var questions = document.querySelector(".questions").length; 
-        <!-- stores the sum of the answers user selected  -->
-        var total = 0; 
-        <!-- stores the avg of the selected answers -->
-        var average = 0; 
-        
-        $('.answer').on('click', function(){
-          $(this).addClass('selected');
-          total += $(this).data('value');
-        
-          console.log(total);
-          
-        })
-    </script>
+    <!-- <script type="text/js">
+    </script> -->
 </body>
 </html>
