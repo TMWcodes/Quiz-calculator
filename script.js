@@ -18,3 +18,19 @@ $(".answer").on("click", function () {
 
   console.log(total);
 });
+
+$(".finish").on("click", function () {
+  avg = total / questions;
+  var message = "";
+
+  if (avg < 1.5) {
+    message = "you are 1 type";
+  } else if (avg < 2.5) {
+    message = "you are 1 type";
+  } else if (avg < 3.5) {
+    message = "you are 3 type";
+  } else {
+    message = "you are a 4 type";
+  }
+  alert(message);
+});
