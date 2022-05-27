@@ -1,93 +1,92 @@
-html{
-    background-color: #2b3e50;
+html {
+  background-color: #2b3e50;
 }
 
 body {
-    background-color: aliceblue;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 100%;
-    text-align: center;
-    width: 800px;
-    margin: 10px auto;
-    padding: 20px;
-    border-radius: 1em;
+  background-color: aliceblue;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 100%;
+  text-align: center;
+  width: 800px;
+  margin: 10px auto;
+  padding: 20px;
+  border-radius: 1em;
 }
-h1{
-    color: cornflowerblue;
-}
-
-h3.questions{
-    font-size: 2em;
+h1 {
+  color: cornflowerblue;
 }
 
-.info{
-    font-size: 1.5em;
+h3.questions {
+  font-size: 2em;
 }
 
-.answer{
-    background-color: #df691a;
-    color: rgb(255, 255, 255);
-    border-radius: 10px;
-    padding: 1em;
-    text-align: center;
-    width: 60%;
-    font-size: 1.5em;
-    margin: 10px auto 0;
-}   
-
-.answer:hover{
-    background-color: cornflowerblue;
+.info {
+  font-size: 1.5em;
 }
 
-.answers.selected{
-    background-color: cornflowerblue;
+.answer {
+  background-color: #df691a;
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 1em;
+  text-align: center;
+  width: 60%;
+  font-size: 1.5em;
+  margin: 10px auto 0;
 }
 
-.button{
-    background-color: cornflowerblue;
-    color: rgb(255, 255, 255);
-    border-radius: 10px;
-    padding: 10px 5px;
-    text-align: center;
-    cursor: pointer;
-    font-size: 2em;
+.answer:hover {
+  background-color: cornflowerblue;
 }
 
-.mini.button{
-    display: block;
-    width: 30%;
+.answer.selected {
+  background-color: cornflowerblue;
 }
 
-.next{
-    float: right;
-
+.button {
+  background-color: cornflowerblue;
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 10px 5px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 2em;
 }
 
-.previous{
-    float: left;
+.mini.button {
+  display: block;
+  width: 30%;
 }
 
-.button:hover{
-    background-color: darkcyan;
+.next {
+  float: right;
 }
 
-.button-holder{
-    width: 60%;
-    padding: 5em 0;
-    margin: .5em auto;
+.previous {
+  float: left;
+}
+
+.button:hover {
+  background-color: darkcyan;
+}
+
+.button-holder {
+  width: 60%;
+  padding: 5em 0;
+  margin: 0.5em auto;
 }
 
 .clearfix:before,
-.clearfix:after{
-    content: " ";
-    display: table;
+.clearfix:after {
+  content: " ";
+  display: table;
 }
 
 .clearfix:after {
-    clear: both;
+  clear: both;
 }
 
-.response p{
-    margin: 50px auto;
-    font-size: 3em;
+.response p {
+  margin: 50px auto;
+  font-size: 3em;
 }
