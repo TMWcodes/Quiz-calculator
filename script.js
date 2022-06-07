@@ -1,5 +1,6 @@
 // stores the number of questions
-var questions = document.querySelector(".questions").length;
+var questions = $(".question").length;
+console.log(questions);
 //    stores the sum of the answers user selected
 var total = 0;
 //   stores the avg of the selected answers
