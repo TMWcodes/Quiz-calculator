@@ -1,5 +1,6 @@
 // stores the number of questions
-var questions = document.querySelector(".questions").length;
+var questions = $(".question").length;
+console.log(questions);
 //    stores the sum of the answers user selected
 var total = 0;
 //   stores the avg of the selected answers
@@ -17,4 +18,25 @@ $(".answer").on("click", function () {
   total += $(this).data("value");
 
   console.log(total);
+});
+
+$(".finish").on("click", function () {
+  avg = total / questions;
+  var message = "";
+
+  if ($(".selected").length === questions) {
+    if (avg < 1.5) {
+      message = "you are 1 type";
+    } else if (avg < 2.5) {
+      message = "you are 1 type";
+    } else if (avg < 3.5) {
+      message = "you are 3 type";
+    } else {
+      message = "you are a 4 type";
+    }
+  } else {
+    message = "you missed at least one question";
+  }
+
+  alert(message);
 });
