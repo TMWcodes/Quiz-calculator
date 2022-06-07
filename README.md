@@ -1,9 +1,10 @@
 # Quiz-calculator
 
-step 1
 user selects answers
 user can change answers by selection a different answer
 answers get averaged and user gets their result.
+user sees result of finish screen.
+randomize questions and answers with shuffle function
 
 Choice Vanilla v Jquery
 reference: https://css-tricks.com/now-ever-might-not-need-jquery/

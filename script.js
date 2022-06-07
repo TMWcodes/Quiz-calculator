@@ -5,6 +5,7 @@ console.log(questions);
 var total = 0;
 //   stores the avg of the selected answers
 var average = 0;
+var myQuestions = $("section.q-n.a");
 
 $(".answer").on("click", function () {
   //traverse Dom, whatever was clicked go up to the parent and find class of selected, remove its value from total
@@ -34,9 +35,12 @@ $(".finish").on("click", function () {
     } else {
       message = "you are a 4 type";
     }
+    $("#quiz-area, .finish").hide();
   } else {
     message = "you missed at least one question";
   }
+  $(".response p").text(message);
+  $(".response").show();
 
-  alert(message);
+  // alert(message);
 });

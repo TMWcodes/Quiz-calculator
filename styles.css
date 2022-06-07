@@ -89,4 +89,5 @@ h3.questions {
 .response p {
   margin: 50px auto;
   font-size: 3em;
+  /* display: none; */
 }
