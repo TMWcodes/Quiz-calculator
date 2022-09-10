@@ -1,18 +1,20 @@
 // stores the number of questions
-var questions = $(".question").length;
-
+let questions = $(".question").length;
 //    stores the sum of the answers user selected
-var total = 0;
+let total = 0;
 //   stores the avg of the selected answers
-var average = 0;
-var myQuestions = $("section.q-n.a");
-var currQ = 0; //current question
+let average = 0;
+//current question
+let currQ = 0;
+
+let myQuestions = $("section.q-n.a");
 
 //
 myQuestions.each(function (index) {
-  var myAnswers = $(this).find(".answer");
+  let myAnswers = $(this).find(".answer");
   $(this).find(".answers").html(myAnswers);
   $(this).attr("id", index + 1);
+  console.log(index);
   if (index == 0) {
     //remove previous button from first question
     $(this).find(".previous").remove();
@@ -40,13 +42,13 @@ $(".answer").on("click", function () {
 
 $(".finish").on("click", function () {
   avg = total / questions;
-  var message = "";
+  let message = "";
 
   if ($(".selected").length === questions) {
     if (avg < 1.5) {
       message = "you are 1 type";
     } else if (avg < 2.5) {
-      message = "you are 1 type";
+      message = "you are 2 type";
     } else if (avg < 3.5) {
       message = "you are 3 type";
     } else {
@@ -61,3 +63,5 @@ $(".finish").on("click", function () {
 
   // alert(message);
 });
+
+module.exports = script;
