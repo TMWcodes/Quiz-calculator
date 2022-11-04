@@ -1,0 +1,8 @@
+personalityQuiz.md
+img
+node_modules
+coverage
+package-lock.json
+package.json
+sum.js
+sum.test.js
