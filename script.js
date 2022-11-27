@@ -9,6 +9,17 @@ let currQ = 0;
 
 let myQuestions = $("section.q-n.a");
 
+let myImage = document.querySelector("img");
+// $(".image").hide();
+// Image changer
+// myImage.onclick = function () {
+//   let mySrc = myImage.getAttribute("src");
+//   if (mySrc === "img/achiever_flag.png") {
+//     myImage.setAttribute("src", "img/harvester_flag.png");
+//   } else {
+//     myImage.setAttribute("src", "img/achiever_flag.png");
+//   }
+// };
 //
 myQuestions.each(function (index) {
   let myAnswers = $(this).find(".answer");
@@ -40,26 +51,35 @@ $(".answer").on("click", function () {
   console.log(total);
 });
 
+// Type calculation on finish
 $(".finish").on("click", function () {
   avg = total / questions;
   let message = "";
 
   if ($(".selected").length === questions) {
     if (avg < 1.5) {
-      message = "you are 1 type";
+      message = "You're a Hunter";
+      myImage.setAttribute("src", "img/hunter_flag.png");
     } else if (avg < 2.5) {
-      message = "you are 2 type";
+      message = "You're a Socializer";
+      myImage.setAttribute("src", "img/harvester_flag.png");
     } else if (avg < 3.5) {
-      message = "you are 3 type";
+      message = "You're an Achiever";
+      myImage.setAttribute("src", "img/achiever_flag.png");
     } else {
-      message = "you are a 4 type";
+      message = "You're an Explorer";
+      myImage.setAttribute("src", "img/explorer_flag.png");
     }
+    // hide quiz-area ID
     $("#quiz-area, .finish").hide();
+    // $(".image").show();
   } else {
     message = "you missed at least one question";
   }
   $(".response p").text(message);
-  $(".response").show();
+  $(".image").show();
+  // $(".response p").text(message);
+  // $(".response").show();
 
   // alert(message);
 });
