@@ -14,6 +14,7 @@ body {
 }
 h1 {
   color: cornflowerblue;
+  font-family: "Courier New", Courier, monospace;
 }
 
 h3.questions {
@@ -30,8 +31,8 @@ h3.questions {
   border-radius: 10px;
   padding: 1em;
   text-align: center;
-  width: 60%;
-  font-size: 1.5em;
+  width: 40%;
+  font-size: 1.2em;
   margin: 10px auto 0;
 }
 
@@ -44,13 +45,14 @@ h3.questions {
 }
 
 .button {
-  background-color: cornflowerblue;
+  background-color: rgb(26, 114, 165);
   color: rgb(255, 255, 255);
   border-radius: 10px;
   padding: 10px 5px;
   text-align: center;
   cursor: pointer;
   font-size: 2em;
+  margin-top: 20px;
 }
 
 .mini.button {
@@ -71,9 +73,10 @@ h3.questions {
 }
 
 .button-holder {
-  width: 60%;
-  padding: 5em 0;
+  width: 40%;
+  padding: 0.5em 0;
   margin: 0.5em auto;
+  font-size: 10px;
 }
 
 .clearfix:before,

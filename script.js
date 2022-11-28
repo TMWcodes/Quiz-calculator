@@ -1,5 +1,6 @@
 // stores the number of questions
 let questions = $(".question").length;
+// let questions = document.querySelector(".question");
 //    stores the sum of the answers user selected
 let total = 0;
 //   stores the avg of the selected answers
@@ -10,31 +11,34 @@ let currQ = 0;
 let myQuestions = $("section.q-n.a");
 
 let myImage = document.querySelector("img");
-// $(".image").hide();
-// Image changer
-// myImage.onclick = function () {
-//   let mySrc = myImage.getAttribute("src");
-//   if (mySrc === "img/achiever_flag.png") {
-//     myImage.setAttribute("src", "img/harvester_flag.png");
-//   } else {
-//     myImage.setAttribute("src", "img/achiever_flag.png");
-//   }
-// };
-//
+
+// $(".previous").remove();
 myQuestions.each(function (index) {
   let myAnswers = $(this).find(".answer");
+  // console.log(".answers");
   $(this).find(".answers").html(myAnswers);
   $(this).attr("id", index + 1);
   console.log(index);
-  if (index == 0) {
+  if (index === 0) {
     //remove previous button from first question
     $(this).find(".previous").remove();
   }
 });
 
-function showQ() {
-  $("section.q-n-a").hide();
-}
+// shuffle(myQuestions);
+
+// function shuffle(array) {
+//   for (let i = array.length - 1; i > 0; i--) {
+//     let j = Math.floor(Math.random() * (i + 1));
+//     [array[i], array[j]] = [array[j], array[i]];
+//   }
+// }
+
+// $("#quiz-area").html(myQuestions);
+
+// function showQ() {
+//   $("section.q-n-a").hide();
+// }
 //
 
 $(".answer").on("click", function () {
