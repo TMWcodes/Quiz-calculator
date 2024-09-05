@@ -1,108 +1,91 @@
-// Stores the number of questions
-const questions = document.querySelectorAll(".question").length;
-// Stores the sum of the answers user selected
-let total = 0;
-// Stores the average of the selected answers
-let average = 0;
-// Current question index
-let currQ = 0;
+document.addEventListener("DOMContentLoaded", function () {
+  // Store the number of questions and initialize variables
+  const questions = document.querySelectorAll(".q-n-a").length;
+  let totalScore = 0;
+  let currentQuestionIndex = 0;
+  const quizArea = document.getElementById("quiz-area");
+  const finishButton = document.querySelector(".finish");
+  const response = document.querySelector(".response p");
+  const imageBox = document.querySelector(".imagebox img");
 
-// Select all question sections
-const myQuestions = Array.from(document.querySelectorAll("section.q-n-a"));
-// Select the image element
-const myImage = document.querySelector("img");
-
-// Remove 'previous' button from the first question
-myQuestions.forEach((question, index) => {
-  const myAnswers = question.querySelectorAll(".answer");
-
-  question.querySelector(".answers").innerHTML = Array.from(myAnswers)
-    .map((answer) => answer.outerHTML)
-    .join("");
-  question.id = index + 1;
-
-  if (index === 0) {
-    const previousButton = question.querySelector(".previous");
-    if (previousButton) previousButton.remove(); // Safely remove the previous button
+  // Hide all questions except the first one
+  const quizSections = document.querySelectorAll(".q-n-a");
+  function showQuestion(index) {
+    quizSections.forEach((section, idx) => {
+      section.style.display = idx === index ? "block" : "none";
+    });
   }
-});
+  showQuestion(currentQuestionIndex);
 
-// Shuffle the questions array
-shuffle(myQuestions);
+  // Handle answer selection and score updating
+  document.querySelectorAll(".answer").forEach((answer) => {
+    answer.addEventListener("click", function () {
+      const parent = this.closest(".answers");
 
-// Append shuffled questions to the quiz area
-const quizArea = document.getElementById("quiz-area");
-quizArea.innerHTML = "";
-myQuestions.forEach((q) => quizArea.appendChild(q));
+      // Remove previously selected answer's value from totalScore
+      const selectedAnswer = parent.querySelector(".selected");
+      if (selectedAnswer) {
+        totalScore -= parseInt(selectedAnswer.dataset.value);
+        selectedAnswer.classList.remove("selected");
+      }
 
-// Function to shuffle an array (Fisher-Yates shuffle)
-function shuffle(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-}
+      // Add the current answer's value to totalScore
+      this.classList.add("selected");
+      totalScore += parseInt(this.dataset.value);
+    });
+  });
 
-// Function to hide all questions
-function hideQuestions() {
-  myQuestions.forEach((q) => (q.style.display = "none"));
-}
+  // Move to the next question
+  document.querySelectorAll(".next").forEach((nextButton) => {
+    nextButton.addEventListener("click", function () {
+      if (currentQuestionIndex < questions - 1) {
+        currentQuestionIndex++;
+        showQuestion(currentQuestionIndex);
+      }
+    });
+  });
 
-// Event listener for selecting answers
-document.addEventListener("click", (event) => {
-  if (event.target.classList.contains("answer")) {
-    const parent = event.target.closest(".answers");
+  // Move to the previous question
+  document.querySelectorAll(".previous").forEach((prevButton) => {
+    prevButton.addEventListener("click", function () {
+      if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        showQuestion(currentQuestionIndex);
+      }
+    });
+  });
 
-    // Remove previous selected class and update total
-    const previousSelected = parent.querySelector(".selected");
-    if (previousSelected) {
-      total -= previousSelected.dataset.value;
-      previousSelected.classList.remove("selected");
-    }
+  // Show final result based on the average score
+  finishButton.addEventListener("click", function () {
+    const avgScore = totalScore / questions;
+    let faction = "";
+    let imgSrc = "";
 
-    // Add selected class and update total
-    event.target.classList.add("selected");
-    total += parseInt(event.target.dataset.value);
+    if (document.querySelectorAll(".selected").length === questions) {
+      if (avgScore < 1.5) {
+        faction = "Utilitarian (blue)";
+        imgSrc = "img/utilitarian_flag.png";
+      } else if (avgScore < 2.5) {
+        faction = "Pacifist (yellow)";
+        imgSrc = "img/pacifist_flag.png";
+      } else if (avgScore < 3.5) {
+        faction = "Group-Oriented (green)";
+        imgSrc = "img/group_flag.png";
+      } else {
+        faction = "Selfish (red)";
+        imgSrc = "img/selfish_flag.png";
+      }
 
-    console.log(`Current total: ${total}`);
-  }
-});
+      // Display the final result
+      response.textContent = `You belong to the ${faction} faction.`;
+      imageBox.setAttribute("src", imgSrc);
 
-// Event listener for finish button
-document.querySelector(".finish").addEventListener("click", () => {
-  const selectedAnswers = document.querySelectorAll(".selected").length;
-
-  if (selectedAnswers === questions) {
-    const avg = total / questions;
-    let message = "";
-
-    if (avg < 1.5) {
-      message = "You're a Hunter";
-      myImage.src = "img/hunter_flag.png";
-    } else if (avg < 2.5) {
-      message = "You're a Socializer";
-      myImage.src = "img/harvester_flag.png";
-    } else if (avg < 3.5) {
-      message = "You're an Achiever";
-      myImage.src = "img/achiever_flag.png";
+      // Hide quiz-area and show the final result
+      quizArea.style.display = "none";
+      finishButton.style.display = "none";
+      document.querySelector(".image").style.display = "block";
     } else {
-      message = "You're an Explorer";
-      myImage.src = "img/explorer_flag.png";
+      response.textContent = "You missed at least one question!";
     }
-
-    // Hide quiz and finish button
-    document.getElementById("quiz-area").style.display = "none";
-    document.querySelector(".finish").style.display = "none";
-
-    // Display result message and image
-    document.querySelector(".response p").textContent = message;
-    document.querySelector(".image").style.display = "block";
-  } else {
-    // Message when not all questions are answered
-    document.querySelector(".response p").textContent =
-      "You missed at least one question.";
-  }
+  });
 });
-
-// Export the script (optional if using a bundler like Webpack)
-export default script;
