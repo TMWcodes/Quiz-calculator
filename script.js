@@ -1,91 +1,108 @@
-// stores the number of questions
-let questions = $(".question").length;
-// let questions = document.querySelector(".question");
-//    stores the sum of the answers user selected
+// Stores the number of questions
+const questions = document.querySelectorAll(".question").length;
+// Stores the sum of the answers user selected
 let total = 0;
-//   stores the avg of the selected answers
+// Stores the average of the selected answers
 let average = 0;
-//current question
+// Current question index
 let currQ = 0;
 
-let myQuestions = $("section.q-n.a");
+// Select all question sections
+const myQuestions = Array.from(document.querySelectorAll("section.q-n-a"));
+// Select the image element
+const myImage = document.querySelector("img");
 
-let myImage = document.querySelector("img");
+// Remove 'previous' button from the first question
+myQuestions.forEach((question, index) => {
+  const myAnswers = question.querySelectorAll(".answer");
 
-// $(".previous").remove();
-myQuestions.each(function (index) {
-  let myAnswers = $(this).find(".answer");
-  // console.log(".answers");
-  $(this).find(".answers").html(myAnswers);
-  $(this).attr("id", index + 1);
-  console.log(index);
+  question.querySelector(".answers").innerHTML = Array.from(myAnswers)
+    .map((answer) => answer.outerHTML)
+    .join("");
+  question.id = index + 1;
+
   if (index === 0) {
-    //remove previous button from first question
-    $(this).find(".previous").remove();
+    const previousButton = question.querySelector(".previous");
+    if (previousButton) previousButton.remove(); // Safely remove the previous button
   }
 });
 
-// shuffle(myQuestions);
+// Shuffle the questions array
+shuffle(myQuestions);
 
-// function shuffle(array) {
-//   for (let i = array.length - 1; i > 0; i--) {
-//     let j = Math.floor(Math.random() * (i + 1));
-//     [array[i], array[j]] = [array[j], array[i]];
-//   }
-// }
+// Append shuffled questions to the quiz area
+const quizArea = document.getElementById("quiz-area");
+quizArea.innerHTML = "";
+myQuestions.forEach((q) => quizArea.appendChild(q));
 
-// $("#quiz-area").html(myQuestions);
-
-// function showQ() {
-//   $("section.q-n-a").hide();
-// }
-//
-
-$(".answer").on("click", function () {
-  //traverse Dom, whatever was clicked go up to the parent and find class of selected, remove its value from total
-  if ($(this).parent().find(".selected").length > 0) {
-    total -= $(this).parent().find(".selected").data("value");
-    $(this).parent().find(".selected").removeClass("selected");
+// Function to shuffle an array (Fisher-Yates shuffle)
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
   }
+}
 
-  $(this).addClass("selected");
-  //from data-value
-  total += $(this).data("value");
+// Function to hide all questions
+function hideQuestions() {
+  myQuestions.forEach((q) => (q.style.display = "none"));
+}
 
-  console.log(total);
+// Event listener for selecting answers
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("answer")) {
+    const parent = event.target.closest(".answers");
+
+    // Remove previous selected class and update total
+    const previousSelected = parent.querySelector(".selected");
+    if (previousSelected) {
+      total -= previousSelected.dataset.value;
+      previousSelected.classList.remove("selected");
+    }
+
+    // Add selected class and update total
+    event.target.classList.add("selected");
+    total += parseInt(event.target.dataset.value);
+
+    console.log(`Current total: ${total}`);
+  }
 });
 
-// Type calculation on finish
-$(".finish").on("click", function () {
-  avg = total / questions;
-  let message = "";
+// Event listener for finish button
+document.querySelector(".finish").addEventListener("click", () => {
+  const selectedAnswers = document.querySelectorAll(".selected").length;
 
-  if ($(".selected").length === questions) {
+  if (selectedAnswers === questions) {
+    const avg = total / questions;
+    let message = "";
+
     if (avg < 1.5) {
       message = "You're a Hunter";
-      myImage.setAttribute("src", "img/hunter_flag.png");
+      myImage.src = "img/hunter_flag.png";
     } else if (avg < 2.5) {
       message = "You're a Socializer";
-      myImage.setAttribute("src", "img/harvester_flag.png");
+      myImage.src = "img/harvester_flag.png";
     } else if (avg < 3.5) {
       message = "You're an Achiever";
-      myImage.setAttribute("src", "img/achiever_flag.png");
+      myImage.src = "img/achiever_flag.png";
     } else {
       message = "You're an Explorer";
-      myImage.setAttribute("src", "img/explorer_flag.png");
+      myImage.src = "img/explorer_flag.png";
     }
-    // hide quiz-area ID
-    $("#quiz-area, .finish").hide();
-    // $(".image").show();
-  } else {
-    message = "you missed at least one question";
-  }
-  $(".response p").text(message);
-  $(".image").show();
-  // $(".response p").text(message);
-  // $(".response").show();
 
-  // alert(message);
+    // Hide quiz and finish button
+    document.getElementById("quiz-area").style.display = "none";
+    document.querySelector(".finish").style.display = "none";
+
+    // Display result message and image
+    document.querySelector(".response p").textContent = message;
+    document.querySelector(".image").style.display = "block";
+  } else {
+    // Message when not all questions are answered
+    document.querySelector(".response p").textContent =
+      "You missed at least one question.";
+  }
 });
 
-module.exports = script;
+// Export the script (optional if using a bundler like Webpack)
+export default script;

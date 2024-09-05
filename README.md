@@ -1,6 +1,10 @@
 # Quiz-calculator
 
-Player answers multiple questions and receives a 'type' back.
+This concept is to blend philosophical, psychological, and moral themes into a sorting quiz, which is engaging and thought-provoking.
+
+Color-coded groups tied to distinct moral or decision-making philosophies should be clear and easy to associate with personality types.
+
+The quiz would assess the user's values in increasingly complex situations, sorting them into moral categories based on their choices.
 
 **Game loop**
 
@@ -43,7 +47,7 @@ for functions used - 3 callbacks
 
 **Choice: Vanilla v Jquery**
 
-**Decided: Jquery**
+**Initial Decision: Jquery**
 
 Jquery
 
@@ -56,6 +60,9 @@ Vanilla
 `var elem = document.querySelector(".someClass") elem.remove() '$elem.prepend(otherElem);`
 
 **Same with .before .replaceWith .closest**
+
+**revision: Javascript**
+New JS and frameworks have made JQuery somewhat redundant
 
 <!-- ### References:
 

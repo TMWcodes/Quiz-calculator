@@ -1,120 +1,75 @@
-issues:
-quiz option 2 comes back as type 1 (typo)
-
 # Game type
 
-Quiz
+A chapter-based moral exploration, where each chapter focuses on a distinct area of life (e.g., medicine, AI, war) with progressively harder or more personal dilemmas.
 
-# User stories
+### Concept Refinement:
 
-# methods/classes
+Themes: thematic areas (Trolley, Medicine, AI, etc.) as "chapters" or "levels" in the quiz.
+Escalation: The stakes keep getting higher for immersion and keeping players invested in the outcome.
+Moral Categories: Players’ responses will place them into categories which can be enriched by the diversity of scenarios.
 
-# examples
+### groups
 
-```javascript
-
-#=>
-```
-
-# implementation
-
-if 1 is Utilitarian (blue) #noEmpathy #logic "ends justify mean advance toward common good"
-if 2 is Pacifist (yellow) "first do no harm, always cooperate"
-if 3 is (green) "help our group"
-if 4 is selfish (red) "help ourself"
-
-```javascript
-response message and img
-
-how to add image
-```
+utilitarian (Blue): Logical, results-oriented, focuses on maximizing overall good.
+Pacifist (Yellow): Emphasizes cooperation, harmony, and non-violence.
+Collectivist (Green): Prioritizes group welfare, community, and shared goals.
+Egoist (Red): Self-interested, focuses on personal benefit, and individual gains.
 
 ## chapters
 
-1. Creativity - AI
-1. Adaptability - innocent threat, prisoner
-1. Sacrifice - Medicine
-1. Sustainability - Trolley
-1. Integrity - solider
-1. Accountability - president
+1. Creativity – AI
+   Focus: Innovation, problem-solving, and the ethical implications of advanced technologies.
+   Key Scenarios:
 
-### trolley problem
+Self-driving car decisions (passengers vs pedestrians).
+Automating jobs or protecting livelihoods.
+AI making life-or-death decisions.
+Corporate ethics around AI (cost vs profit).
 
-respect, responsibility, integrity
+2. Adaptability – Innocent Threat, Prisoner
+   Focus: Flexibility in difficult situations, balancing ethical choices under pressure.
+   Key Scenarios:
 
-5 vs 1 equal
-5 low value strangers vs 1 high value stranger
-5 vs 1 coworker
-5 vs 1 friend
-5 vs 1 family
-the world or yourself
-push man onto tracks
+Prisoner's Dilemma (cooperation vs self-preservation).
+Breaking the law to save others.
+Situations where innocents are endangered (people in the way, hostage dilemmas).
+Evolving moral decisions based on changing circumstances (adaptability under stress).
 
-### medicine
+3. Sacrifice – Medicine
+   Focus: Ethical dilemmas that involve trade-offs and sacrifice for the greater good.
+   Key Scenarios:
 
-<!-- justice, temperance, courage, wisdom -->
+Organ harvesting (sacrificing one life to save many).
+Euthanasia and end-of-life decisions.
+Experimental treatments like vaccines (risk to few for the potential good of many).
+Heart transplants (age, worth, and fairness in resource allocation).
 
-Heart transplant. car accident - old victim, young perp.
+4. Sustainability – Trolley Problem
 
-euthanasia. cancer patient
+   Focus: Balancing the needs of the few versus the many, often with moral ambiguity.
+   Key Scenarios:
 
-organ harvesting - 1 life for 5.
+Classic trolley problem (5 vs 1).
+Escalating dilemmas (5 low-value vs 1 high-value, friends, coworkers, family).
+The world vs yourself (global sustainability vs personal sacrifice).
+Moral decisions around preserving life and resource management.
 
-prototype vaccine - make one in 5 sick.
+5. Integrity – Soldier
 
-placebo -
+   Focus: Staying true to one’s morals and values, especially in extreme situations.
+   Key Scenarios:
 
-hooked to another person
-the tenant problem
-the expanding child problem
-people seeds
+Killing on command (duty vs conscience).
+Collateral damage in warfare.
+Stealing food for survival vs leaving it for others.
+Moral obligations in the face of unethical orders.
 
-### AI
+6. Accountability – President
 
-cars - passengers vs pedestrians
+   Focus: Leadership and the ethical burden of responsibility for others.
+   Key Scenarios:
 
-criminal privacy
-
-environment vs child
-
-old/ill/pregnant workers vs healthy workers.
-
-less cost for more advertisements
-
-profit to customers or employees.
-
-automate or save jobs.
-
-kill to cover secrets or confess.
-
-### soldier
-
-kill on command
-steal food for your team or leave with owner.
-Collateral damage
-
-### prisoner
-
-prisoners dilemma
-save other prisoners, break the law
-
-### president
-
-privacy vs safety
-torture - information vs ethics
-
-### innocent threat
-
-people in the way (door, car)
-
-## progression
-
-Upping the stakes
-many high value vs friend
-millions vs family
-yourself vs ..
-
-### group
-
-trolley and ai car
-organs and dog
+Privacy vs safety (mass surveillance or protection).
+Torture for information vs ethics.
+Sacrificing personal ethics for the greater good of society.
+Decisions with national or global implications (e.g., protecting citizens or violating ethical boundaries).
